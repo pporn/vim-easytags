@@ -85,6 +85,11 @@ function! xolox#easytags#check_ctags_compatible(name, min_version) " {{{2
       call xolox#misc#msg#debug("easytags.vim %s: Assuming development build is compatible ..", g:xolox#easytags#version, a:name)
       return 1
     endif
+    " Try to support Universal Ctags
+    if g:easytags_ctags_version == '0.0.0'
+      call xolox#misc#msg#debug("easytags.vim %s: Version is compatible! :-)", g:xolox#easytags#version)
+      return 1
+    endif
     " Make sure the version is compatible.
     if xolox#misc#version#at_least(a:min_version, g:easytags_ctags_version)
       call xolox#misc#msg#debug("easytags.vim %s: Version is compatible! :-)", g:xolox#easytags#version)
